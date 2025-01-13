@@ -1,6 +1,6 @@
 # ISA
 
-## Categorisation
+## Categorization
 
 ### instruction format
 
@@ -24,3 +24,18 @@
   - uses 12 bits for immediate value
   - saves 1 register
   - uses Rn and Rd
+- conditional type
+  - Note that the relative branching is always $N*4$ since the PC increments by
+  a word. How we do this is left shift by 2.
+
+### Addressing mode
+
+- Register addressing
+- base addressing
+- immediate addressing
+- pc-relative addressing
+
+## Question to clarify
+
+- for branching, assume address of size 4 bits. since it is signed number, what
+  if i were to branch 0111, since we need to LLS, that becomes a -ve number.

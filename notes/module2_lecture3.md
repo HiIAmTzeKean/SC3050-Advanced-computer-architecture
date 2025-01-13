@@ -29,13 +29,15 @@ memory words (divide by 4).
 - Little Endian has the smallest significant value at a smaller address
 - Big Endian has the biggest significant value at a smaller address
 
-## Categorisation
+## categorization
 
 ### Instruction Format
 
 - Register
 - Data
+- Immediate format
 - Conditional
+- Conditional branch
 
 ### Functionality
 
@@ -44,4 +46,3 @@ memory words (divide by 4).
 - Data Transfer
   - ld, st
 - Conditional Branch
-  - b
