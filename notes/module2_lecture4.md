@@ -39,3 +39,6 @@
 
 - for branching, assume address of size 4 bits. since it is signed number, what
   if i were to branch 0111, since we need to LLS, that becomes a -ve number.
+
+Response: There is a sign extender that will take care of the shifting. The sign
+value of the number will be preserved.

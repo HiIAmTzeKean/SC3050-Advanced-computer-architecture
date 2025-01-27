@@ -93,6 +93,14 @@ Harvard
   - Note that the graph is exponential in nature
   - What this limit represents is the serial component of the program that cannot
   be parallised and is a cost that we cannot reduce
+- Gustafson's Law
+  - Uses fixed time as basis and computes the speedup
+  - We let the original time be $T_s + n \cdot T_p$
+  - We let enhanced be $T_s + T_p$ as we can parallise the $n$ components in a
+    single time block
+  - $speedup = \frac{enhanced}{original} = \frac{time_{original}}{time_{enhanced}}$
+  - $speedup = \frac{T_s + n \cdot T_p}{T_s + T_p} = n - U(n-1)$
+  - where $U = \frac{T_s}{T_s + T_p}$ the fraction unenhanced
 
 ### Factors that affect exec time
 
@@ -124,3 +132,11 @@ Known as IRON LAW
 - Reduce CPI
   - pipelining in datapath
   - Multi-issue processor such as verilog to parallelise instruct
+
+### Power dissipation
+
+Power dissipation is an issue when trying to increase performance.
+2 factors are dynamic and static power dissipation. Where
+
+$$Dynamic Power = ACV^2f$$
+$$Static Power = VI_{leak}$$
