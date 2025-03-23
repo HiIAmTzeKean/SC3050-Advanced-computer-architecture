@@ -70,6 +70,12 @@ ties in with the datapath
 
 ![reg race condition](image/register_race_condition.png)
 
+Response: no race condition, it is just forwarding of data. look in to the data
+forwarding mechanism section for more information.
+
 ![data transfer](image/data_transfer.png)
 
 - this address should not be 64, but 64/4 = 16
+
+Response: No, the multiplication of the addr is only done for branching instructions
+and not for load or store.

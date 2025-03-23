@@ -62,7 +62,7 @@ multi-bit prediction
 - Are flush and stall able to be done in the same step? do we count them separately
   for the total branch penalty?
 
-![early_evaluation_branch](data/early_evaluation_branch.png)
+![early_evaluation_branch](image/early_evaluation_branch.png)
 
 - how is this possible? flags are set and determined in ALU, how can we push to
   decode stage.
