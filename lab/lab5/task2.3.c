@@ -13,9 +13,9 @@ __global__ void vector_dot_product(int *a, int *b, int *c) {
 }
 
 int main() {
-    int[4] a = {22, 13, 16, 5};
-    int[4] b = {5, 22, 17, 37};
-    int c;
+    int a[4] = {22, 13, 16, 5};
+    int b[4] = {5, 22, 17, 37};
+    int c[1];
     int *d_a, *d_b, *d_c;
     int size = 4 * sizeof(int);
     // Allocate memory on the GPU

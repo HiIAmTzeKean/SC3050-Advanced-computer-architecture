@@ -1,22 +1,26 @@
 __global__ void vector_dot_product(int *day, float *price, float *c) {
     __shared__ float temp[7];
+    __shared__ float price_temp[4];
+    // Copy the price array to shared memory
+    if (threadIdx.x < 4) {
+        price_temp[threadIdx.x] = price[threadIdx.x];
+    }
+    __syncthreads(); // Synchronize threads within a block
+
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     for (int j = 0; j < 4; j++) {
-        temp[i] += day[j][i] * price[j];
+        temp[i] += day[j][i] * price_temp[j];
     }
 }
 int main() {
-    int[4][7] day = {
-        {3, 13, 16, 5},
-        {5, 22, 17, 37},
-        {2, 22, 17, 37},
-        {0, 22, 17, 37}
+    int day[4][7] = {
+        {3, 2, 0, 3, 4, 10, 8},
+        {5, 4, 3, 5, 5, 13, 11},
+        {2, 5, 3, 4, 5, 21, 15},
+        {0, 1, 1, 4, 3, 16, 8}
     };
-    float[4] price = {29.99, 14.99, 9.99, 24.99};
-    float[7] c;
-    dim3 block(1, 1, 1);
-    dim3 grid(7, 1, 1);
-
+    float price[4] = {29.99, 14.99, 9.99, 24.99};
+    float c[7];
     float *d_day, *d_price, *d_c;
     // Allocate memory on the GPU
     cudaMalloc((void**)&d_day, 7 * 4 * sizeof(int));
@@ -26,7 +30,7 @@ int main() {
     cudaMemcpy(d_day, day, size, cudaMemcpyHostToDevice);
     cudaMemcpy(d_price, price, size, cudaMemcpyHostToDevice);
     // Launch the vector_add kernel on GPU
-    vector_dot_product<<<grid, block>>>(d_day, d_price, d_c);
+    vector_dot_product<<<1, 7>>>(d_day, d_price, d_c);
     // Copy the result vector from GPU buffer to host memory
     cudaMemcpy(c, d_c, sizeof(float), cudaMemcpyDeviceToHost);
     // Free GPU memory
