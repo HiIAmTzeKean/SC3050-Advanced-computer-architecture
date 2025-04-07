@@ -47,6 +47,6 @@ int main() {
         printf("%d\t", b[i]);
     }
     printf("\n");
-    printf("Answer = %d\n", c);
+    printf("Answer = %d\n", *c);
     return 0;
 }
