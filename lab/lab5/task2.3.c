@@ -37,6 +37,16 @@ int main() {
     cudaFree(d_b);
     cudaFree(d_c);
     // Print the result
-    printf("Dot product: %d\n", c);
+    printf("A:\t");
+    for (int i = 0; i < 4; i++) {
+        printf("%d\t", a[i]);
+    }
+    printf("\n");
+    printf("B:\t");
+    for (int i = 0; i < 4; i++) {
+        printf("%d\t", b[i]);
+    }
+    printf("\n");
+    printf("Answer = %d\n", c);
     return 0;
 }

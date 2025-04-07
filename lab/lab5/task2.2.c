@@ -28,9 +28,19 @@ int main() {
     cudaFree(d_a);
     cudaFree(d_b);
     cudaFree(d_c);
-    // Print the result
+    printf("A:\t");
     for (int i = 0; i < 4; i++) {
-        printf("%d + %d = %d\n", a[i], b[i], c[i]);
+        printf("%d\t", a[i]);
+    }
+    printf("\n");
+    printf("B:\t");
+    for (int i = 0; i < 4; i++) {
+        printf("%d\t", b[i]);
+    }
+    printf("\n");
+    printf("C:\t");
+    for (int i = 0; i < 4; i++) {
+        printf("%d\t", c[i]);
     }
     return 0;
 }
