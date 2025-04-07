@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <cuda_runtime.h>
+
 __global__ void vector_dot_product(int *day, float *price, float *c) {
     __shared__ float temp[7];
     __shared__ float price_temp[4];

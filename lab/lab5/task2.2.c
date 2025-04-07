@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <cuda_runtime.h>
+
 __global__ void vector_add(int *a, int *b, int *c) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     c[i] = a[i] + b[i];
